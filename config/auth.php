@@ -40,6 +40,27 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+       
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],  
+
+
+        'admin' => [
+            'driver' => 'token',
+            'provider' => 'admins_users', // You need to define this provider below
+            'hash' => false,
+        ],
+
+        'vendor' => [
+            'driver' => 'session',
+            'provider' => 'admins_users',
+        ],
+
+
+
     ],
 
     /*
@@ -65,12 +86,22 @@ return [
             'model' => App\Models\User::class,
         ],
 
+
+        'admins_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CenterAdmin::class, // Replace with your admin model
+        ],
+
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
+    
 
+
+   
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
